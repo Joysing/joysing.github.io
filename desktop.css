@@ -218,7 +218,7 @@ body {
     height: 500px;
     max-height: calc(90% - 120px);
     width: 800px;
-    left: calc(50% - 400px);
+    left: calc(50% - 540px);
     border-radius: 20px;
     background-color: #ffffff50;
     backdrop-filter: blur(50px) saturate(130%);
