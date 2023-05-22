@@ -17,13 +17,13 @@
 	  s.parentNode.insertBefore(hm, s);
 	})();
 	</script>
-
 </head>
 <body>
-	<nav class="navbar fixed-top navbar-dark bg-primary">
+	<nav class="navbar fixed-top navbar-expand navbar-dark bg-primary">
 		<div class="container-fluid">
-			<a class="navbar-brand">蛇尾李氏族谱</a>
-			<div class="row">
+		<a class="navbar-brand" href="#">蛇尾李氏族谱</a>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		  <div class="row">
 			  <div class="col-12">
 				<div class="list-group list-group-horizontal" id="page-tab" role="toolbar">
 				  <a class="list-group-item list-group-item-action text-nowrap active btn btn-warning" id="page1" data-bs-toggle="list" href="#" role="tab">网页版</a>
@@ -31,11 +31,23 @@
 				</div>
 			  </div>
 			</div>
-			<div class="d-flex">
-				<input id="searchInput" class="form-control me-2" type="search" placeholder="查找名字" aria-label="查找名字">
-			</div>
+		  <form class="d-flex input-group" role="search">
+			<input class="form-control ms-4" id="searchInput" type="search" placeholder="名字" aria-label="名字">
+			<button class="btn btn-success" id="searchButton" onclick="searchButtonClick()">查找</button>
+		  </form>
+		</div>
 		</div>
 	</nav>
+	<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
+		<div id="searchToast" class="toast align-items-center text-bg-warning border-0" role="alert" aria-live="assertive" aria-atomic="true">
+		  <div class="d-flex">
+			<div class="toast-body">
+				未查找到结果。
+			</div>
+			<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+		  </div>
+		</div>
+	</div>
 	<div class="container-fluid" style="margin-top:43px;">
 		<!-- <hr class="border border-primary border-2 opacity-75"> -->
 
@@ -78,15 +90,10 @@
 			</div>
 			<iframe id="myIframe" src="./dist/pdf/web/viewer.html?file=../../../zupuMerge.pdf" width="100%" height="100%" scrolling="no" frameborder="10" 
 			 style="background-color:#000000;height: 100%;position: fixed;">
-				<p>抱歉，您的浏览器不支持PDF预览，请点击链接下载PDF文件<a href="./zupuMerge.pdf"></a></p>
+				<p>抱歉，您的浏览器不支持PDF预览，请点击链接<a href="./zupuMerge.pdf">下载PDF文件</a></p>
 			</iframe>
 		</div>
-		
 	</div>
-	<!-- <div id="pdfContent" class="container-fluid" style="margin-top:23px;"> -->
-		
-	<!-- </div> -->
-	
 
 	<script src="./dist/libs/jquery-3.6.4.min.js"></script>
 	<script src="./dist/jstree.js"></script>
@@ -195,6 +202,10 @@
 				$('#ajaxParent').animate({
 					scrollTop: $('#'+data.res[0]).offset().top-$('#ajaxParent')[0].offsetHeight/2,
 					scrollLeft: $('#'+data.res[0]).offset().left}, 100);
+			}else{
+				//显示提示toast
+				var searchToast = new bootstrap.Toast(document.getElementById('searchToast'))
+				searchToast.show()
 			}
 		})
 		.jstree({
@@ -225,22 +236,16 @@
 			"plugins" : ["search", "state", "types", "wholerow", "themes","sort"]
 		});
 	}
-	
-	
 	//查找功能
-	var searchTiming = false;
-	$('#searchInput').keyup(function () {
-		if(searchTiming) { clearTimeout(searchTiming); }
-		searchTiming = setTimeout(function () {
-			var searchInput=$('#searchInput').val();
-			if(document.getElementById("ajax1").style.display == 'block')
-				$("#ajax1").jstree(true).search(searchInput);
-			else if(document.getElementById("ajax2").style.display == 'block')
-				$("#ajax2").jstree(true).search(searchInput);
-			else if(document.getElementById("ajax3").style.display == 'block')
-				$("#ajax3").jstree(true).search(searchInput);
-		}, 250);
-	});
+	function searchButtonClick(){  
+		var searchInput=$('#searchInput').val();
+		if(document.getElementById("ajax1").style.display == 'block')
+			$("#ajax1").jstree(true).search(searchInput);
+		else if(document.getElementById("ajax2").style.display == 'block')
+			$("#ajax2").jstree(true).search(searchInput);
+		else if(document.getElementById("ajax3").style.display == 'block')
+			$("#ajax3").jstree(true).search(searchInput);
+	} 
 	
 	const triggerTabList = document.querySelectorAll('#list-tab a')
 	triggerTabList.forEach(triggerEl => {
@@ -271,13 +276,15 @@
 		if(event.srcElement.id=="page1"){
 			document.getElementById("content").style.display = 'block';
 			document.getElementById("pdfContent").style.display = 'none';
-			document.getElementById("searchInput").setAttribute("placeholder","查找名字");
+			document.getElementById("searchInput").setAttribute("placeholder","名字");
 			document.getElementById("searchInput").disabled=""
+			document.getElementById("searchButton").disabled=""
 		}else if(event.srcElement.id=="page2"){
 			document.getElementById("content").style.display = 'none';
 			document.getElementById("pdfContent").style.display = 'block';
-			document.getElementById("searchInput").setAttribute("placeholder","使用下面放大镜查找");
+			document.getElementById("searchInput").setAttribute("placeholder","用下面放大镜查找");
 			document.getElementById("searchInput").disabled="disabled"
+			document.getElementById("searchButton").disabled="disabled"
 		}
 		
 	  })
