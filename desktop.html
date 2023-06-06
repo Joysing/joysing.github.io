@@ -15,6 +15,14 @@
 	<script>
 		//捷停车领取优惠券（美林假日-金林苑）
 		function vehicleDiscount(vehicleNo){
+			var today = new Date();//定义日期对象
+			var yyyy = today.getFullYear();//通过日期对象的getFullYear()方法返回年
+			var MM = today.getMonth() + 1;//月
+			var dd = today.getDate();//日
+			var hh = today.getHours();//小时
+			var mm = today.getMinutes();//分钟
+			var ss = today.getSeconds();//秒
+			var nowDateTime=yyyy+MM+dd+hh+mm+ss;
 			var httpRequest = new XMLHttpRequest();//第一步：创建需要的对象
 			httpRequest.open('POST', 'https://cmssy.jslife.com.cn/jscsn/fixQrCodeMgmt/discount', true); //第二步：打开连接
 			httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");//设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
@@ -25,7 +33,7 @@
 			httpRequest.onreadystatechange = function () {//请求后的回调接口，可将请求成功后要执行的程序写在其中
 			    if (httpRequest.readyState == 4 && httpRequest.status == 200) {//验证请求是否发送成功
 				var json = httpRequest.responseText;//获取到服务端返回的数据
-				console.log(vehicleNo,json);
+				console.log(nowDateTime,vehicleNo,json);
 			    }
 			};
 		}
