@@ -37,12 +37,22 @@
 			    }
 			};
 		}
-		
-		vehicleDiscount('粤-T92739');
-		vehicleDiscount('粤-T999CC');
-		loooop=setInterval("vehicleDiscount('粤-T92739')",3600000);//一小时循环
+		var IntervalFlag=0;
+		function changeVehicleInterval(){
+			if(IntervalFlag==0){
+				console.log("已启动 自动停车优惠");
+				IntervalFlag=setInterval("console.log('粤-T92739')",3000);
+			}
+			else{
+				console.log("已停止 自动停车优惠");
+				IntervalFlag=window.clearInterval(IntervalFlag)//停止
+			}
+		}
+		//vehicleDiscount('粤-T92739');
+		//vehicleDiscount('粤-T999CC');
+		//loooop=setInterval("vehicleDiscount('粤-T92739')",3600000);//一小时循环
 		//loooop=window.clearInterval(loooop)//停止循环
-		loooop1=setInterval("vehicleDiscount('粤-T999CC')",3600000);//一小时循环
+		//loooop1=setInterval("vehicleDiscount('粤-T999CC')",3600000);//一小时循环
 		//loooop=window.clearInterval(loooop)//停止循环
 	</script>
 </head>
@@ -85,6 +95,7 @@
 			<input-before class="bi bi-search"></input-before>
 			<list>
 				<p class="text">可用</p>
+				<a onclick="changeVehicleInterval();"><img src="icon/terminal.png"><p>启动/停止自动停车优惠</p></a>
 				<a onclick="showwin('setting');hide_startmenu();">
 				<img src="icon/setting.png"><p>设置</p></a>
 				<a onclick="showwin('explorer');hide_startmenu();">
@@ -93,6 +104,7 @@
 				<img src="icon/calc.png"><p>计算器</p></a>
 				<a onclick="showwin('about');hide_startmenu();">
 					<img src="icon/about.png"><p>关于本系统</p></a>
+				
 				<p class="text">其它</p>
 				<a><img src="icon/camera.png"><p>相机</p></a>
 			</list>
