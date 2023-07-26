@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>疫苗预约查询</title>
+	<link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
+	<link rel="stylesheet" href="./dist/themes/default/style.min.css" />
+	<link rel="stylesheet" href="./zupu.css?v=4" />
+	<link  rel="stylesheet" href="./dist/bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css">
+	<script src="./dist/bootstrap-5.3.0-alpha1-dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+	<nav class="navbar fixed-top navbar-expand navbar-dark bg-primary">
+		<div class="container-fluid">
+		
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<div>疫苗查询系统</div>
+		</div>
+		</div>
+	</nav>
+	
+	<div class="container-fluid" style="margin-top:4.3em;">
+		<!-- <hr class="border border-primary border-2 opacity-75"> -->
+
+		<div id="content" class="row" style="margin-left: 10px;">
+			<select class="form-select form-select mb-3" aria-label=".form-select example">
+			  <option value="1" selected>身份证（内陆居民）</option>
+			</select>
+			<div class="input-group input-group">
+			  <span class="input-group-text" id="inputGroup-sizing">证件号码</span>
+			  <input type="text" class="form-control" id="idNumber" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
+			</div>
+		</div>
+		<br>
+		<div class="d-grid gap-2">
+			  <button class="btn btn-primary" type="button" onclick="OKClick()">确认</button>
+			</div>
+	</div>
+	<br>
+	
+	<footer class="border-top footer text-muted text-center mb-3">
+        <div class="container">
+            &copy; 2023 - 香港综合肿瘤中心<br>
+        </div>
+    </footer>
+	<script src="./dist/libs/jquery-3.6.4.min.js"></script>
+	<script src="./dist/jstree.js"></script>
+	
+	<script>
+	function OKClick() {
+		var idNumber=$('#idNumber').val();
+		if(idNumber!="441702200108112224"){
+			alert("不存在预约记录")
+		}else{
+			window.location.href = "/detail.html";
+		}
+	}
+
+
+	</script>
+</body>
+</html>

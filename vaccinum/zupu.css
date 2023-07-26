@@ -1,0 +1,50 @@
+
+body {
+	margin:20px auto;
+	/* padding:20px 10px; */
+	font-size:1.4em;
+    
+}
+/* iOS禁止微信调整字体大小 */
+body {
+    -webkit-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+    -moz-text-size-adjust: 100% !important;
+}
+h1 { 
+	font-size:1.8em;
+	font-family: "楷体","楷体_GB2312";
+ }
+#description { 
+	font-size: 1.5em;
+	font-family: "楷体","楷体_GB2312";
+ }
+#title { 
+	text-align: center;
+ }
+
+.jstree-node {
+	margin-left: 14px !important;
+}
+.jstree-default .jstree-wholerow-clicked {
+    background: #beebffb3 !important;
+    background: -webkit-linear-gradient(top, #beebff 0%, #a8e4ff 100%) !important;
+    background: linear-gradient(to bottom, #beebff8f 0%, #a8e4ffb0 100%) !important;
+}
+
+.personicon {
+	background-image: url(./dist/themes/default/person-fill.svg) !important;
+	background-position: center center !important;
+	background-size: contain !important;
+	width: 20px !important;
+	height: inherit !important;
+	filter: drop-shadow(#0d6efd 100px 0);
+    transform: translateX(-100px);
+}
+.depticon {
+	background-image: url(./dist/themes/default/dept.gif) !important;
+	background-position: center center !important;
+	background-size: contain !important;
+	width: 20px !important;
+	height: inherit !important;
+}
