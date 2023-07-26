@@ -12,30 +12,24 @@
 
 </head>
 <body>
-	<nav class="navbar fixed-top navbar-expand navbar-dark bg-primary">
-		<div class="container-fluid">
-		
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<div>疫苗查询系统</div>
-		</div>
-		</div>
+	<nav class="navbar navbar-dark bg-primary">
+	  <div class="container-fluid">
+		<a class="navbar-brand">疫苗查询系统</a>
+	  </div>
 	</nav>
-	
-	<div class="container-fluid" style="margin-top:4.3em;">
+	<div class="container-fluid" style="margin-top:1.3em;">
 		<!-- <hr class="border border-primary border-2 opacity-75"> -->
 
-		<div id="content" class="row" style="margin-left: 10px;">
-			<select class="form-select form-select mb-3" aria-label=".form-select example">
-			  <option value="1" selected>身份证（内陆居民）</option>
-			</select>
+		<div id="content" class="row">
+		
 			<div class="input-group input-group">
-			  <span class="input-group-text" id="inputGroup-sizing">证件号码</span>
+			  <span class="input-group-text" id="inputGroup-sizing">身份证号码</span>
 			  <input type="text" class="form-control" id="idNumber" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
 			</div>
 		</div>
 		<br>
 		<div class="d-grid gap-2">
-			  <button class="btn btn-primary" type="button" onclick="OKClick()">确认</button>
+			  <button class="btn btn-primary" type="button" onclick="OKClick()">查询</button>
 			</div>
 	</div>
 	<br>
