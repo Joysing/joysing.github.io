@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<title>疫苗预约查询</title>
+	<title>疫苗預約查詢</title>
 	<link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
 	<link rel="stylesheet" href="./dist/themes/default/style.min.css" />
 	<link rel="stylesheet" href="./zupu.css?v=4" />
@@ -14,7 +14,7 @@
 <body>
 	<nav class="navbar navbar-dark bg-primary">
 	  <div class="container-fluid">
-		<a class="navbar-brand">疫苗查询系统</a>
+		<a class="navbar-brand">疫苗查詢系統</a>
 	  </div>
 	</nav>
 	<div class="container-fluid" style="margin-top:1.3em;">
@@ -23,20 +23,20 @@
 		<div id="content" class="row">
 		
 			<div class="input-group input-group">
-			  <span class="input-group-text" id="inputGroup-sizing">身份证号码</span>
+			  <span class="input-group-text" id="inputGroup-sizing">身份證號碼</span>
 			  <input type="text" class="form-control" id="idNumber" aria-label="Sizing example input" aria-describedby="inputGroup-sizing">
 			</div>
 		</div>
 		<br>
 		<div class="d-grid gap-2">
-			  <button class="btn btn-primary" type="button" onclick="OKClick()">查询</button>
+			  <button class="btn btn-primary" type="button" onclick="OKClick()">查詢</button>
 			</div>
 	</div>
 	<br>
 	
 	<footer class="border-top footer text-muted text-center mb-3">
         <div class="container">
-            &copy; 2023 - 香港综合肿瘤中心<br>
+            &copy; 2023 - 香港綜合腫瘤中心<br>
         </div>
     </footer>
 	<script src="./dist/libs/jquery-3.6.4.min.js"></script>
@@ -46,7 +46,7 @@
 	function OKClick() {
 		var idNumber=$('#idNumber').val();
 		if(idNumber!="441702200108112224"){
-			alert("不存在预约记录")
+			alert("不存在預約記錄")
 		}else{
 			window.location.href = "detail.html";
 		}
